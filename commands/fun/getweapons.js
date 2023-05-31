@@ -23,6 +23,9 @@ module.exports = {
         }
 
         )
-        interaction.reply(response)
+        if (response.length>0) {
+            await interaction.reply(response)
+        }
+
     }
 }

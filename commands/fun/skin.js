@@ -24,13 +24,13 @@ module.exports = {
             .then(data => {
                 for (i=0; i<data["data"].length; i++) {
                     for (j=0; j<data["data"][i]["skins"].length; j++) {
-                        if (data["data"][i]["skins"][j]["displayName"] === skin) {
+                        if (data["data"][i]["skins"][j]["displayName"].toLowerCase() === skin.toLowerCase()) {
                             if (data["data"][i]["skins"][j]["chromas"].length === 1) {
                                 embedSkins = [
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][0]["fullRender"])
-                                        .setTitle(skin + "(variant 1)")
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 1)")
                                 ]
 
                             }
@@ -39,11 +39,11 @@ module.exports = {
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][0]["fullRender"])
-                                        .setTitle(skin + "(variant 1)"),
+                                        .setTitle(skin + " (variant 1)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][1]["fullRender"])
-                                        .setTitle(skin + "(variant 2)")
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 2)")
                                 ]
                             }
                             if (data["data"][i]["skins"][j]["chromas"].length === 3) {
@@ -51,15 +51,15 @@ module.exports = {
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][0]["fullRender"])
-                                        .setTitle(skin + "(variant 1)"),
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 1)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][1]["fullRender"])
-                                        .setTitle(skin + "(variant 2)"),
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 2)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][2]["fullRender"])
-                                        .setTitle(skin + "(variant 3)")
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 3)")
                                 ]
                             }
                             if (data["data"][i]["skins"][j]["chromas"].length === 4) {
@@ -67,19 +67,19 @@ module.exports = {
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][0]["fullRender"])
-                                        .setTitle(skin + "(variant 1)"),
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 1)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][1]["fullRender"])
-                                        .setTitle(skin + "(variant 2)"),
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 2)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][2]["fullRender"])
-                                        .setTitle(skin + "(variant 3)"),
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 3)"),
                                     new EmbedBuilder()
                                         .setColor(0x0)
                                         .setImage(data["data"][i]["skins"][j]["chromas"][3]["fullRender"])
-                                        .setTitle(skin + "(variant 4)")
+                                        .setTitle(data["data"][i]["skins"][j]["displayName"] + " (variant 4)")
                                 ]
 
                             }
@@ -89,7 +89,12 @@ module.exports = {
             }
 
             )
-            interaction.reply({embeds: embedSkins})
+            if (embedSkins.length>0) {
+                await interaction.reply({embeds: embedSkins})
+            }
+
+
+
 
     }
 }

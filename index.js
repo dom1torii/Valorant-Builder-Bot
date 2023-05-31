@@ -37,24 +37,3 @@ for (const file of eventFiles) {
 }
 
 client.login(token);
-
-
-
-
-		// let response = ""
-
-		// fetch('https://valorant-api.com/v1/weapons', {
-		// 	method: 'GET',
-		// 	headers: {
-		// 		'Accept': 'application/json',
-		// 	},
-		// })
-		// .then(response => response.json())
-		// .then(response => 
-
-		// 	client.on('messageCreate', (message) => {
-		// 	if (message.content === "123") {
-		// 		message.reply(JSON.stringify(response["data"][1]["displayName"]));
-		// 	}
-
-		// 	}))
